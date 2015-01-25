@@ -48,6 +48,7 @@ var rootDir = opts.rootDir || './etc';
 
 props.initialize(rootDir + '/config', propHierarchy);
 
+var address = props.get('gcc-explorer', 'address', os.hostname());
 var port = props.get('gcc-explorer', 'port', 10240);
 
 function loadSources() {
@@ -216,9 +217,9 @@ findCompilers().then(function (compilers) {
 
     // GO!
     console.log("=======================================");
-    console.log("Listening on http://" + os.hostname() + ":" + port + "/");
+    console.log("Listening on http://" + address + ":" + port + "/");
     console.log("=======================================");
-    webServer.listen(port);
+    webServer.listen(port, address);
 }).catch(function (err) {
     console.log("Error: " + err.stack);
 });
