@@ -1,7 +1,14 @@
+
+ifeq (FreeBSD,$(shell uname -s))
+    LIBS :=
+else
+    LIBS := -ldl
+endif
+
 all: libpreload.so
 
 libpreload.so: preload.c
-	$(CC) -std=c99 -shared -O1 -fPIC $^ -o $@ -ldl
+	$(CC) -std=c99 -shared -O1 -fPIC $^ -o $@ $(LIBS)
 
 .PHONY: test clean
 test: libpreload.so

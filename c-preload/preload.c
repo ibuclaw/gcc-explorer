@@ -37,6 +37,18 @@
 #define O_CREAT 0100
 #endif
 
+#ifdef __FreeBSD__
+static char *strchrnul(const char *p, int ch)
+{
+    char c = ch;
+    for (;; ++p) {
+        if (*p == c || *p == '\0')
+            break;
+    }
+    return ((char *)p);
+}
+#endif
+
 static int allowed_match(const char* path, const char* okpath) {
     char resolvedBuf[PATH_MAX];
     const char* resolved = path;
