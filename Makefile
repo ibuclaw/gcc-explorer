@@ -11,7 +11,7 @@ endif
 .PHONY: clean run test run-amazon c-preload optional-d-support prereqs
 prereqs: optional-d-support node_modules c-preload
 
-ifeq "" "$(shell which gdc)"
+ifeq "" "$(shell which dmd)"
 optional-d-support:
 	@echo "D language support disabled"
 else

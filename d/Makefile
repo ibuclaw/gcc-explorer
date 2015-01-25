@@ -1,3 +1,3 @@
-GDC?=gdc
+DMD?=dmd
 demangle: demangle.d
-	$(GDC) -O2 $< -o $@
+	$(DMD) -O -release $<
