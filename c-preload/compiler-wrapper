@@ -1,8 +1,8 @@
 #/bin/sh
 
 export LD_PRELOAD=$(dirname $0)/libpreload.so
-export ALLOWED_FOR_CREATE=/tmp 
-export ALLOWED_FOR_READ=/usr/local/include:/usr/include:/usr/lib:/usr/msp430:/usr/arm-linux-gnueabi/include:/tmp:/opt/:/dev/urandom:/etc/lsb-release:/etc/debian_version:/proc/self:/proc/self/maps
+export ALLOWED_FOR_CREATE=/tmp
+export ALLOWED_FOR_READ=/home/ibuclaw/dmd2065:/home/ibuclaw/dmd2066:/tmp:/dev/urandom:/proc/self:/proc/self/maps
 # Last-gasp limits
 ulimit -t 3 # CPU time in seconds
 ulimit -v 500000 # virtual RAM limit in K
