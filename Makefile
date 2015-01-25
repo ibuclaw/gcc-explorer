@@ -5,7 +5,7 @@ default:
 	@echo "On Ubuntu/Debian try: sudo apt-get install nodejs npm"
 	exit 1
 else
-default: run
+default: node_modules optional-d-support c-preload
 endif
 
 .PHONY: clean run test run-amazon c-preload optional-d-support prereqs
