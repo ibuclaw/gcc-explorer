@@ -12,7 +12,7 @@ default:
 else
 NPM:= $(shell which npm)
 NODE:= $(shell which node || which nodejs)
-default: run
+default: node_modules optional-d-support c-preload
 endif
 endif
 
