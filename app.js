@@ -168,23 +168,19 @@ function clientOptionsHandler(compilers, fileSources) {
 function getCompilerInfo(compilerInfo) {
     return new Promise(function (resolve) {
         var compiler = compilerInfo.exe;
-        child_process.exec(compiler + ' --version', function (err, output) {
-            if (err) return resolve(null);
+        child_process.exec(compiler + ' -v', function (err, output) {
+            if (err && !output) return resolve(null);
             var version = output.split('\n')[0];
-            child_process.exec(compiler + ' --target-help', function (err, output) {
-                var options = {};
-                if (!err) {
-                    var splitness = /--?[-a-zA-Z]+( ?[-a-zA-Z]+)/;
-                    output.split('\n').forEach(function (line) {
-                        var match = line.match(splitness);
-                        if (!match) return;
-                        options[match[0]] = true;
-                    });
-                }
-                compilerInfo.version = version;
-                compilerInfo.supportedOpts = options;
-                resolve(compilerInfo);
+            var options = {};
+            var splitness = /-?[-a-zA-Z]+( ?[-a-zA-Z]+)/;
+            output.split('\n').forEach(function (line) {
+                var match = line.match(splitness);
+                if (!match) return;
+                options[match[0]] = true;
             });
+            compilerInfo.version = version;
+            compilerInfo.supportedOpts = options;
+            resolve(compilerInfo);
         });
     });
 }
