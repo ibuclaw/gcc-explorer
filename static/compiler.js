@@ -161,10 +161,8 @@ function Compiler(domRoot, origFilters, windowLocalPrefix, onChangeCallback, cmM
         }
         lastUpdatedAsm = hashedUpdate;
 
-        var asm = processAsm(currentAssembly, filters);
-        var asmText = $.map(asm, function (x) {
-            return x.text;
-        }).join("\n");
+        var asm = currentAssembly.split("\n");
+        var asmText = currentAssembly;
         var numberedLines = numberUsedLines(asm);
 
         cppEditor.operation(function () {
@@ -174,20 +172,6 @@ function Compiler(domRoot, origFilters, windowLocalPrefix, onChangeCallback, cmM
             asmCodeMirror.setValue(asmText);
             clearBackground(asmCodeMirror);
         });
-        if (filters.colouriseAsm) {
-            cppEditor.operation(function () {
-                $.each(numberedLines.source, function (line, ordinal) {
-                    cppEditor.addLineClass(parseInt(line),
-                        "background", "rainbow-" + (ordinal % NumRainbowColours));
-                });
-            });
-            asmCodeMirror.operation(function () {
-                $.each(numberedLines.asm, function (line, ordinal) {
-                    asmCodeMirror.addLineClass(parseInt(line),
-                        "background", "rainbow-" + (ordinal % NumRainbowColours));
-                });
-            });
-        }
     }
 
     function pickOnlyRequestFilters(filters) {
@@ -266,7 +250,6 @@ function Compiler(domRoot, origFilters, windowLocalPrefix, onChangeCallback, cmM
         var compiler = compilersById[$('.compiler').val()];
         if (compiler === undefined)
             return;
-        domRoot.find('.filter button.btn[value="intel"]').toggleClass("disabled", !compiler.supportedOpts["-masm"]);
     }
 
     function mapCompiler(compiler) {
