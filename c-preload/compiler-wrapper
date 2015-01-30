@@ -1,8 +1,9 @@
 #/bin/sh
 
+export ASM_DIR=/usr/local/dlang.org/asm
 export LD_PRELOAD=$(dirname $0)/libpreload.so
 export ALLOWED_FOR_CREATE=/tmp
-export ALLOWED_FOR_READ=/home/ibuclaw/dmd2065:/home/ibuclaw/dmd2066:/tmp:/dev/urandom:/proc/self:/proc/self/maps
+export ALLOWED_FOR_READ=${ASM_DIR}/dmd2065:${ASM_DIR}/dmd2066:${ASM_DIR}/dmd_nightly:/tmp:/dev/urandom:/proc/self:/proc/self/maps
 # Last-gasp limits
 ulimit -t 3 # CPU time in seconds
 ulimit -v 500000 # virtual RAM limit in K
