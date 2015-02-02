@@ -47,7 +47,7 @@ void main() {
             continue;
         }
         // Ignore '/path/foo' and 'Disassembly of section...' lines
-        if (s2.length && s2[0] == '/' || s2[0] == 'D')
+        if (s2.length && (s2[0] == '/' || s2[0] == 'D'))
             continue;
         // Ignore initial set of blank lines outputted from objdump.
         if (skipEmpty) {
@@ -68,7 +68,7 @@ void main() {
         }
 
         // Skip over .text and other symbol disassemblies.
-        if (!skipSection && s2[0] == '.') {
+        if (!skipSection && s2.length && s2[0] == '.') {
             skipSection = true;
             continue;
         }
