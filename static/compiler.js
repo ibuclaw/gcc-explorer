@@ -378,18 +378,11 @@ define(function (require) {
     };
 
     Compiler.prototype.updateButtons = function () {
-        if (!this.compiler) return;
-        var filters = this.getEffectiveFilters();
         // We can support intel output if the compiler supports it, or if we're compiling
         // to binary (as we can disassemble it however we like).
-        var intelAsm = this.compiler.supportsIntel || filters.binary;
-        this.domRoot.find("[data-bind='intel']").toggleClass("disabled", !intelAsm);
+        this.domRoot.find("[data-bind='intel']").toggleClass("disabled", false);
         // Disable binary support on compilers that don't work with it.
-        this.domRoot.find("[data-bind='binary']")
-            .toggleClass("disabled", !this.compiler.supportsBinary);
-        // Disable any of the options which don't make sense in binary mode.
-        var filtersDisabled = !!filters.binary && !this.compiler.supportsFiltersInBinary;
-        this.domRoot.find('.nonbinary').toggleClass("disabled", filtersDisabled);
+        this.domRoot.find("[data-bind='binary']").toggleClass("disabled", true);
     };
 
     Compiler.prototype.onOptionsChange = function (options) {

@@ -75,22 +75,9 @@
                 </tr>
             </table>
             <div class="btn-group btn-group-sm filters" data-toggle="buttons">
-                <button class="btn btn-sm" title="Compile to binary and disassemble the output"
-                        data-bind="binary">
+                <button class="btn btn-sm active" title="Compile to binary and disassemble the output"
+                        data-bind="binary" style="display: none;">
                     <span>11010</span>
-                </button>
-                <button class="btn btn-sm active nonbinary" title="Filter unused labels from the output"
-                        data-bind="labels">
-                    <span>.LX0:</span>
-                </button>
-                <button class="btn btn-sm active nonbinary" title="Filter all assembler directives from the output"
-                        data-bind="directives">
-                    <span>.text</span>
-                </button>
-                <button class="btn btn-sm active nonbinary"
-                        title="Remove all lines which are only comments from the output"
-                        data-bind="commentOnly">
-                    <span>//</span>
                 </button>
                 <button class="btn btn-sm active" title="Output disassembly in Intel syntax"
                         data-bind="intel">
