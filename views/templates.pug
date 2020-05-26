@@ -92,10 +92,6 @@
           span.hideable &nbsp;Filter...
         .dropdown-menu
           include options-filters.pug
-      .btn-group.btn-group-sm(role="group" aria-label="Compiler additions")
-        button.btn.btn-sm.btn-light.show-libs(title="Include libs" aria-label="Toggle libraries dropdown")
-          span.fas.fa-book
-          span.hideable &nbsp;Libraries
       .btn-group.btn-group-sm(role="group")
         button.btn.btn-sm.btn-light.dropdown-toggle.add-pane(type="button" title="Add a new pane" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Add new element for this compiler")
           span.fas.fa-plus
@@ -107,26 +103,12 @@
           button.dropdown-item.btn.btn-sm.btn-light.create-executor(title="Create executor from this compiler")
             span.dropdown-icon.fas.fa-microchip
             | Executor from this
-          button.dropdown-item.btn.btn-sm.btn-light.view-optimization(title="Show optimization output")
-            span.dropdown-icon.fas.fa-weight
-            | Optimization output
-          button.dropdown-item.btn.btn-sm.btn-light.view-ast(title="Show AST output")
-            span.dropdown-icon.fas.fa-leaf
-            | AST output
-          button.dropdown-item.btn.btn-sm.btn-light.view-ir(title="Show IR output")
-            span.dropdown-icon.fas.fa-align-center
-            | IR output
           button.dropdown-item.btn.btn-sm.btn-light.view-gccdump(title="Show Tree/RTL dump (GCC only)")
             span.dropdown-icon.fas.fa-tree
             | GCC Tree/RTL output
           button.dropdown-item.btn.btn-sm.btn-light.view-cfg(title="Show Graph Output")
             span.dropdown-icon.fas.fa-exchange-alt
             | Graph output
-      .btn-group.btn-group-sm(role="group")
-        button.btn.btn-sm.btn-light.dropdown-toggle.add-tool(type="button" title="Add tool" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Add tooling to this editor and compiler")
-          span.fas.fa-screwdriver
-          span.hideable &nbsp;Add tool...
-        .dropdown-menu.dropdown-menu-right.toolsmenu
     .monaco-placeholder
     .bottom-bar.bg-light
       if !embedded
