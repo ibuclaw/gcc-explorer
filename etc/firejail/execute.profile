@@ -1,3 +1,4 @@
+include etc/firejail/dgnu.inc
 include etc/firejail/standard.inc
 
 private-tmp
